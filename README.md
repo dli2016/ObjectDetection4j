@@ -8,4 +8,4 @@ Notes:
 4. Make sure to load the dll under the mode of "RTLD_LAZY|RTLD_GLOBAL". (Thanks the answer in https://github.com/ContinuumIO/anaconda-issues/issues/6401)
 5. ssd.pytorch is used to do object detection with python (Thanks the source code in https://github.com/amdegroot/ssd.pytorch).
 
-Please feel free to email dli1988@126.com for any prolembs.
+Please feel free to email dli1988@126.com for any problems.
