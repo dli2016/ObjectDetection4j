@@ -4,6 +4,7 @@
  **/
 
 #ifndef _OBJECT_DETECTION_INTF_HPP_
+#define _OBJECT_DETECTION_INTF_HPP_
 
 class ObjectDetectionIntf {
   public:
