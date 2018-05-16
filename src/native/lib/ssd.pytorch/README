@@ -1,0 +1,3 @@
+
+In lib directory, clone the project ssd.pytorch as follows:
+git clone https://github.com/amdegroot/ssd.pytorch
