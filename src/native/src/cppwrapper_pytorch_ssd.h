@@ -41,24 +41,29 @@ class PyTorchSSDCppWrapper: public ObjectDetectionIntf {
     int init(const char* weight_filename);
     // Detect.
     // 1. For test.
-    int detect0(const char* image_filename);
     int detect1(unsigned char* data, int h, int w, int c);
-    // 2. normal interface.
+    // 2. For test another.
     int detect2(const LCPRInputIMG& img, DetectionOutput& detected);
+    // 3. Normal interface
     int detect(unsigned char* data, int h, int w, int c, float* bbs, 
         float* scores);
+    int detect(const char* image_filename);
+    // Test
+    int test(const char* input_str);
     // Release.
     int release(void);
 
   private:
     void parseDetectRes(PyObject* res);
     int parseDetectRes_v2(PyObject* res, float* bbs, float* scores);
+    int initPyEnv(const char* py_home, const char* py_path);
 
   private:
-    //PyObject* net;
-    //PyObject* transform;
-    PyObject* init_res;
-    PyObject* p_module;
+    //PyObject* init_res;
+    //PyObject* input_data;
+    //PyObject* p_module;
+    //PyObject* p_args_in;
+    PyObject* py_instance;
 };
 
 #endif //_CPPWRAPPER_PYTORCH_SSD_H_

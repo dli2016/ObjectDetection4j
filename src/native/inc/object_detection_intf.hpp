@@ -4,7 +4,17 @@
  **/
 
 #ifndef _OBJECT_DETECTION_INTF_HPP_
-#define _OBJECT_DETECTION_INTF_HPP_
+
+typedef enum obj_det_err_type_t_ {
+    SUCCESS = 0,
+    FILE_NOT_EXIST = -1,
+    PY_MOD_IMPORT_ERR = -2,
+    PY_CLS_IMPORT_ERR = -3,
+    PY_CREATE_OBJ_ERR = -4,
+    PY_METHOD_ERR = -5,
+    NULL_STR = -6,
+    NULL_DATA= -7,
+} ObjDetErrorTypes;
 
 class ObjectDetectionIntf {
   public:
@@ -15,7 +25,7 @@ class ObjectDetectionIntf {
     // Detection
     virtual int detect(unsigned char* data, int h, int w, int c, float* bbs,
         float* scores) = 0;
-    virtual int detect0(const char* image_filename) = 0;
+    virtual int detect(const char* image_filename) = 0;
     // Release
     virtual int release(void) = 0;
 };

@@ -27,7 +27,7 @@ public class App
     }
     public static void main( String[] args ) throws Exception
     {
-        if (args.length != 1) {
+        if (args.length != 2) {
             System.out.println("Error: BAD number of input args!");
             System.out.println("Info: 2 args are needed.");
             return;
@@ -45,12 +45,19 @@ public class App
 
         // Load image
         String image_filename = args[0];
+        System.out.println(image_filename);
         opencv_core.Mat img = imread(image_filename, IMREAD_COLOR);
         byte[] img_data = new byte[img.rows() * img.cols() * img.channels()];
         img.data().get(img_data);
 
         // Detect
-        detector.process(img_data, img.rows(), img.cols(), img.channels());
+        int num_loops = Integer.parseInt(args[1]);
+        for (int i = 0; i < num_loops; ++i) {
+            System.out.println("Loop: " + i);
+            detector.process(img_data, img.rows(), img.cols(), img.channels());
+        }
+
+        // Release.
         img.release();
         detector.free();
     }
